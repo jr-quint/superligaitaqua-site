@@ -1,0 +1,128 @@
+    :root {
+        --azul: #002541;
+        --laranja: #f49f1c;
+        --branco: #ffffff;
+    }
+
+
+    header {
+        background-color: var(--azul);
+    }
+
+    header .navbar .nav-link {
+        color: #fff;
+    }
+
+    header .navbar .nav-link:hover {
+        color: #ddd;
+    }
+
+    header img {
+        height: 60px;
+    }
+
+    .banner {
+        background-image: url('/assets/img/banner_principal.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        color: #1A3E6E;
+        padding: 4rem 0;
+        text-align: center;
+    }
+
+    .banner h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .banner a {
+        background-color: #1A3E6E;
+        color: white;
+        padding: 15px 40px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border-radius: 6px;
+        text-decoration: none;
+    }
+
+    .banner p {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+
+    .banner a:hover {
+        background-color: #112d51;
+        color: #fff;
+    }
+
+    .section-premiacao {
+        background: linear-gradient(135deg, #ff9800, #ff5722);
+        color: white;
+    }
+
+
+    .titulos {
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+        color: #154078;
+    }
+
+    .list-group-item {
+        border: none !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .premiacao {
+        /* background: linear-gradient(135deg, #f7c948, #e6b53c); */
+        background-color: #f5f5f5;
+        color: #1A3E6E;
+        padding: 20px 10px;
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        /* box-shadow: 0 4px 10px rgb(247 201 72 / 0.4); */
+    }
+
+    .premiacao h2 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+
+    footer {
+        margin-top: 2rem;
+        background-color: var(--azul);
+        color: var(--branco);
+        text-align: center;
+        font-size: 0.9rem;
+
+        padding: 2rem 0;
+    }
+
+    .texto-rodape {
+        font-size: 0.8rem;
+        margin-top: 12px;
+        color: #ccc;
+    }
+
+
+
+
+    @media (max-width: 768px) {
+        .banner h1 {
+            font-size: 1.8rem;
+        }
+
+        .banner p {
+            font-size: 1rem;
+        }
+
+        .banner a {
+            font-size: 0.8rem;
+        }
+    }
