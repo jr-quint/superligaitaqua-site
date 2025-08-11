@@ -1,0 +1,32 @@
+    .vermelho {
+        background-color: #ffdddd !important;
+    }
+
+    .azul {
+        background-color: #ddeeff !important;
+    }
+
+    .descanso {
+        background-color: #fdfdc4 !important;
+    }
+
+    .proximo {
+        background-color: #d5f8d5 !important;
+    }
+
+    .jogador {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .jogador:last-child {
+        border-bottom: none;
+    }
+
+    .jogador .btn-group {
+        display: flex;
+        gap: 4px;
+    }

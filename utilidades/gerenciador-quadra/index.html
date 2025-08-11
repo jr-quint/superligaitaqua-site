@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerenciador de Quadra</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/utilidades/gerenciador-quadra/assets/css/style.css">
+    <link rel="stylesheet" href="/utilidades/gerenciador-quadra/assets/css/bootstrap.css">
+    <link rel="manifest" href="/utilidades/gerenciador-quadra/manifest.json">
+
+</head>
+
+<body class="bg-light">
+
+    <div class="container py-4">
+        <h1 class="mb-4 text-center">Gerenciador de Quadra</h1>
+
+        <!-- Adicionar Jogador -->
+        <div class="card mb-4">
+            <div class="card-header">➕ Adicionar Jogador à fila</div>
+            <div class="card-body d-flex flex-column flex-md-row gap-2">
+                <input type="text" id="nomeJogador" class="form-control" placeholder="Nome do jogador" />
+                <button class="btn btn-primary" onclick="adicionarJogador()">Adicionar à Fila</button>
+            </div>
+        </div>
+
+        <!-- Quadra -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <div class="card vermelho">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>🔴 Time Vermelho <small>(Vitórias: <span id="contadorVermelho">0</span>)</small></span>
+                        <button class="btn btn-sm btn-outline-dark" title="Time Vermelho perdeu"
+                            onclick="confirmarDerrota('vermelho')">❌</button>
+                    </div>
+                    <ul id="timeVermelho" class="list-group list-group-flush"></ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card azul">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>🔵 Time Azul <small>(Vitórias: <span id="contadorAzul">0</span>)</small></span>
+                        <button class="btn btn-sm btn-outline-dark" title="Time Azul perdeu"
+                            onclick="confirmarDerrota('azul')">❌</button>
+                    </div>
+                    <ul id="timeAzul" class="list-group list-group-flush"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Próximo Time -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>⏭️ Próximo Time</span>
+                <button class="btn btn-sm btn-outline-success" title="Mover próximo time para a quadra"
+                    onclick="moverProximoParaQuadra()">⬆️</button>
+            </div>
+            <ul id="listaProximoTime" class="list-group list-group-flush proximo"></ul>
+        </div>
+
+        <!-- Descanso -->
+        <div class="card mb-4">
+            <div class="card-header">🛌 Time em Descanso</div>
+            <ul id="timeDescanso" class="list-group list-group-flush descanso"></ul>
+        </div>
+
+        <!-- Fila -->
+        <div class="card mb-4">
+            <div class="card-header">📋 Fila</div>
+            <ul id="listaFila" class="list-group list-group-flush"></ul>
+        </div>
+
+        <!-- Ações -->
+        <div class="card mb-4">
+            <div class="card-header">🕹️ Ações</div>
+            <div class="card-body d-flex flex-wrap gap-2">
+
+                <button class="btn btn-outline-secondary" onclick="resetar()">🔄 Resetar Tudo</button>
+            </div>
+        </div>
+
+        <!-- Configurações -->
+        <div class="card mb-4">
+            <div class="card-header">⚙️ Configurações</div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Jogadores por time:</label>
+                        <input type="number" id="inputJogadoresPorTime" class="form-control" min="1" max="10" value="3"
+                            onchange="atualizarConfigJogadores()">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Vitórias para descanso:</label>
+                        <input type="number" id="inputVitoriasParaDescanso" class="form-control" min="1" max="10"
+                            value="3" onchange="atualizarConfigVitoriasDescanso()">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="descansoAutomatico"
+                                onchange="atualizarConfigDescansoAutomatico()">
+                            <label class="form-check-label" for="descansoAutomatico">Ativar Descanso</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="/utilidades/gerenciador-quadra/assets/js/bootstrap.bundle.js"></script>
+
+    <!-- Scripts -->
+    <script src="/utilidades/gerenciador-quadra/assets/js/script.js"></script>
+    <script src="/utilidades/gerenciador-quadra/assets/js/service-worker.js"></script>
+    <script src="/utilidades/gerenciador-quadra/assets/js/app.js"></script>
+
+</body>
+
+</html>
