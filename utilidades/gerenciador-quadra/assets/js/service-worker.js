@@ -8,8 +8,8 @@ self.addEventListener('install', (event) => {
         '/utilidades/gerenciador-quadra/assets/css/bootstrap.css',
         '/utilidades/gerenciador-quadra/assets/js/bootstrap.bundle.js',
         '/utilidades/gerenciador-quadra/assets/js/script.js',
-        '/utilidades/gerenciador-quadra/icons/icon-192x192.png',  // Ícones
-        '/utilidades/gerenciador-quadra/icons/icon-512x512.png'
+        '/utilidades/gerenciador-quadra/assets//icons/icon-192x192.png',  // Ícones
+        '/utilidades/gerenciador-quadra/assets/icons/icon-512x512.png'
       ]);
     })
   );
