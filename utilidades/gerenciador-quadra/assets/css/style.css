@@ -1,32 +1,64 @@
-    .vermelho {
-        background-color: #ffdddd !important;
-    }
+.icon-adicionar {
+    color: #6800a9;
+}
 
-    .azul {
-        background-color: #ddeeff !important;
-    }
+.vermelho {
+    background-color: #ffdddd !important;
+}
 
-    .descanso {
-        background-color: #fdfdc4 !important;
-    }
+.icon-circulo-vermelho {
+    color: #dc3545
+}
 
-    .proximo {
-        background-color: #d5f8d5 !important;
-    }
+.icon-circulo-azul {
+    color: #0d6efd
+}
 
-    .jogador {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 12px;
-        border-bottom: 1px solid #ddd;
-    }
+.azul {
+    background-color: #ddeeff !important;
+}
 
-    .jogador:last-child {
-        border-bottom: none;
-    }
+.descanso {
+    background-color: #fdfdc4 !important;
+}
 
-    .jogador .btn-group {
-        display: flex;
-        gap: 4px;
-    }
+.proximo {
+    background-color: #d5f8d5 !important;
+}
+
+.icon-fila {
+    color: #0066CC;
+}
+
+.icon-acoes {
+    color: #800020;
+}
+
+.icon-proximo {
+    color: #ffc107;
+}
+
+.icon-descanso {
+    color: #006421;
+}
+
+.icon-configs {
+    color: #3A3A3A;
+}
+
+.jogador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.jogador:last-child {
+    border-bottom: none;
+}
+
+.jogador .btn-group {
+    display: flex;
+    gap: 4px;
+}

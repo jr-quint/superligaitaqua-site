@@ -127,20 +127,20 @@ function atualizarInterface() {
                 btnGroup.className = "btn-group btn-group-sm";
 
                 const btnVermelho = document.createElement("button");
-                btnVermelho.className = "btn btn-outline-danger";
-                btnVermelho.textContent = "🔴";
+                btnVermelho.className = "btn btn-outline-danger fa fa-circle icon-circulo-vermelho";
+                btnVermelho.textContent = "";
                 btnVermelho.title = "Mover para Time Vermelho";
                 btnVermelho.onclick = () => moverParaTime(nome, "vermelho");
 
                 const btnAzul = document.createElement("button");
-                btnAzul.className = "btn btn-outline-primary";
-                btnAzul.textContent = "🔵";
+                btnAzul.className = "btn btn-outline-primary fa fa-circle icon-circulo-azul";
+                btnAzul.textContent = "";
                 btnAzul.title = "Mover para Time Azul";
                 btnAzul.onclick = () => moverParaTime(nome, "azul");
 
                 const btnProximo = document.createElement("button");
-                btnProximo.className = "btn btn-outline-success";
-                btnProximo.textContent = "⏭️";
+                btnProximo.className = "btn btn-outline-warning fa fa-fast-forward";
+                btnProximo.textContent = "";
                 btnProximo.title = "Adicionar ao Próximo Time";
                 btnProximo.onclick = () => {
                     if (confirm(`Adicionar "${nome}" ao próximo time?`)) {
@@ -156,8 +156,8 @@ function atualizarInterface() {
                 };
 
                 const btnRemover = document.createElement("button");
-                btnRemover.className = "btn btn-outline-secondary";
-                btnRemover.textContent = "❌";
+                btnRemover.className = "btn btn-outline-danger fa fa-times";
+                btnRemover.textContent = "";
                 btnRemover.title = "Remover da fila";
                 btnRemover.onclick = () => removerDaFila(nome);
 
@@ -172,8 +172,8 @@ function atualizarInterface() {
             if (elementId === "timeVermelho" || elementId === "timeAzul") {
                 const cor = elementId === "timeVermelho" ? "vermelho" : "azul";
                 const btnVoltarFila = document.createElement("button");
-                btnVoltarFila.className = "btn btn-sm btn-outline-warning ms-2";
-                btnVoltarFila.textContent = "↩️";
+                btnVoltarFila.className = "btn btn-sm btn-outline-secondary fa fa-undo ms-2";
+                btnVoltarFila.textContent = "";
                 btnVoltarFila.title = "Voltar para fila";
                 btnVoltarFila.onclick = () => {
                     if (confirm(`Retirar "${nome}" do time ${cor} para fila?`)) {
@@ -193,8 +193,8 @@ function atualizarInterface() {
             // Aqui adicionamos o botão de mover para a quadra, que será mostrado na lista de "próximo time"
             if (elementId === "listaProximoTime") {
                 const btnMoverParaQuadra = document.createElement("button");
-                btnMoverParaQuadra.className = "btn btn-sm btn-outline-info ms-2";
-                btnMoverParaQuadra.textContent = "⬆️";
+                btnMoverParaQuadra.className = "btn btn-sm btn-outline-secondary fa fa-arrow-up ms-2";
+                btnMoverParaQuadra.textContent = "";
                 btnMoverParaQuadra.title = "Mover para a Quadra";
                 btnMoverParaQuadra.onclick = () => {
                     // Tenta mover para o primeiro time incompleto
