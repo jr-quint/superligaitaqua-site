@@ -17,5 +17,12 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+    "screenshots": [
+    {
+      "src": "/utilidades/gerenciador-quadra/assets/screenshots/screenshot1.png",
+      "sizes": "1920x1080",
+      "type": "image/png"
+    }
   ]
 }
