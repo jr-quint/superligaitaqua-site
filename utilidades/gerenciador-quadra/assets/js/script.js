@@ -72,6 +72,14 @@ function adicionarJogador() {
     atualizarInterface();
 }
 
+// Permite adicionar jogador ao pressionar Enter no campo
+document.getElementById("nomeJogador").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        adicionarJogador();
+    }
+});
+
 function estaNaFilaOuTimes(nome) {
     return fila.includes(nome) || quadra.vermelho.includes(nome) || quadra.azul.includes(nome)
         || timeDescanso.includes(nome) || proximoTime.includes(nome);
@@ -197,6 +205,7 @@ function atualizarInterface() {
                 btnMoverParaQuadra.textContent = "";
                 btnMoverParaQuadra.title = "Mover para a Quadra";
                 btnMoverParaQuadra.onclick = () => {
+                    if (!confirm(`Mover "${nome}" do próximo time para a quadra?`)) return;
                     // Tenta mover para o primeiro time incompleto
                     if (quadra.vermelho.length < config.jogadoresPorTime) {
                         // Se o time vermelho tem espaço, move o jogador para ele
@@ -239,6 +248,8 @@ function moverProximoParaQuadra() {
         alert("Não há jogadores no próximo time.");
         return;
     }
+
+    if (!confirm("Mover todo o próximo time para a quadra?")) return;
 
     // Verifica se algum time na quadra está vazio
     if (quadra.vermelho.length === 0) {
