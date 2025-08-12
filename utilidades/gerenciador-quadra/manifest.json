@@ -3,6 +3,7 @@
   "short_name": "Quadra",
   "description": "Aplicativo para gerenciar reservas de quadra.",
   "start_url": "/utilidades/gerenciador-quadra/",
+  "id": "/utilidades/gerenciador-quadra/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0078d4",
