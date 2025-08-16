@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superliga Itaqua Vôlei</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div include-html="/includes/header.html"></div>
+
+    <!-- Banner principal -->
+    <section class="banner">
+        <div class="container">
+            <h1 class="display-4 mb-3">Inscrição</h1>
+        </div>
+    </section>
+
+    <!-- Informações essenciais -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="text-center mb-4">Formulário de Inscrição</h3>
+            <form id="whatsappForm" class="bg-white p-4 rounded shadow-sm">
+                <div class="mb-3">
+                    <label for="nomeTime" class="form-label">Nome do Time:</label>
+                    <input type="text" id="nomeTime" name="nomeTime" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jogador1" class="form-label">Jogador 1:</label>
+                    <input type="text" id="jogador1" name="jogador1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jogador2" class="form-label">Jogador 2:</label>
+                    <input type="text" id="jogador2" name="jogador2" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jogador3" class="form-label">Jogador 3:</label>
+                    <input type="text" id="jogador3" name="jogador3" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jogador4" class="form-label">Jogador 4:</label>
+                    <input type="text" id="jogador4" name="jogador4" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="jogador5" class="form-label">Jogador 5:</label>
+                    <input type="text" id="jogador5" name="jogador5" class="form-control">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <div include-html="/includes/footer.html"></div>
+
+    <script src="/assets/js/formInscricao.js"></script>
+    <script src="/assets/js/includes.js"></script>
+    <script src="/assets/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
