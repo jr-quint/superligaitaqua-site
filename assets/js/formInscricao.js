@@ -12,9 +12,9 @@ document.getElementById('whatsappForm').addEventListener('submit', function (eve
 
     // Cria a URL para o WhatsApp com os dados
     const whatsappNumber = '5511964322730'; // Substitua pelo número de WhatsApp
-    const textMessage = `Inscrição Superliga Itaqua Vôlei \n\n Nome do Time: ${nomeTime} \n Jogador 1: ${nome1} \n Jogador 2: ${nome2} \n Jogador 3: ${nome3} \n Jogador 4: ${nome4} \n Jogador 5: ${nome5}`;
+    const textMessage = `*Inscrição Superliga Itaqua Vôlei* \n\n *Nome do Time:* ${nomeTime} \n *Jogador 1:* ${nome1} \n *Jogador 2:* ${nome2} \n *Jogador 3:* ${nome3} \n *Jogador 4:* ${nome4} \n *Jogador 5:* ${nome5}`;
 
-    const whatsappURL = `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(textMessage)}`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(textMessage)}`;
 
     // Redireciona o usuário para o WhatsApp
     window.open(whatsappURL, '_blank');
