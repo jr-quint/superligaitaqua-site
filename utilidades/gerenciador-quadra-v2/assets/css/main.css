@@ -71,16 +71,22 @@ body {
 }
 
 
-.fallback {
-    display: inline;       /* visível por padrão */
-    pointer-events: none;  /* clique passa pelo span */
+/* por padrão, mostra o fallback */
+.btnIcones .fallback {
+    display: inline;
+    pointer-events: none;
 }
 
-.bi {
+/* se a fonte Bootstrap Icons estiver carregada corretamente */
+.bi::before {
     font-family: "bootstrap-icons";
 }
 
-/* inicialmente escondemos o fallback quando o ícone existe */
-.bi + .fallback {
+/* quando a fonte desenhar algo, escondemos o fallback */
+.bi::before {
+    display: inline-block;
+}
+
+.btnIcones .bi+.fallback {
     display: none;
 }
