@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerênciador de Quadra</title>
+    <!-- Bootstrap e Bootstrap Icons locais -->
+    <link rel="stylesheet" href="/utilidades/gerenciador-quadra-v2/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/utilidades/gerenciador-quadra-v2/assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="/utilidades/gerenciador-quadra-v2/assets/css/main.css">
+    <link rel="manifest" href="/utilidades/gerenciador-quadra-v2/manifest.json">
+    <link rel="icon" type="image/png" href="/utilidades/gerenciador-quadra-v2/assets/icons/img/favicon.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex mb-3 text-center">
+            <h1 class="mx-auto">Gerenciador de Quadra</h1>
+        </div>
+
+        <!-- Adicionar -->
+        <div class="card d-flex mb-3">
+            <div class="card-header">
+                <h5 class="card-text">Adicionar jogador à fila</h5>
+            </div>
+            <div class="card-body d-flex gap-3">
+                <input type="text" id="nome-jogador" class="form-control" placeholder="Nome do Jogador">
+                <button id="adicionar-btn" class="btn btn-primary">Adicionar</button>
+            </div>
+        </div>
+
+
+        <div id="notificacoes"></div>
+
+        <!-- Quadra -->
+        <div class="mb-3">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="card">
+                        <div class="card-header bg-time-verde d-flex">
+                            <div>
+                                <h5 class="my-auto titulo-verde">Time Verde</h5>
+                                <span class="me-2">
+                                    Vitórias:
+                                    <small class="my-auto" id="vitoria-verde">0</small>
+                                </span>
+                                <span id="id-descanso-verde">
+                                    Descanso:
+                                    <small class="my-auto" id="descanso-verde">0</small>
+                                </span>
+                            </div>
+                            <button id="btnTimeVerde" class="ms-auto btn btn-warning btn-sm bi bi-trophy"></button>
+                        </div>
+                        <div class="card-body">
+                            <ol id="lista-time-verde" class="list-group list-group-flush gap-2">
+                                <!-- Adicionado via JavaScript -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-time-azul d-flex">
+                            <div>
+                                <h5 class="my-auto titulo-azul">Time Azul</h5>
+                                <span class="me-2">
+                                    Vitórias:
+                                    <small class="my-auto" id="vitoria-azul">0</small>
+                                </span>
+                                <span id="id-descanso-azul">
+                                    Descanso:
+                                <small class="my-auto" id="descanso-azul">0</small>
+                                </span>
+                            </div>
+                            <button id="btnTimeAzul" class="ms-auto btn btn-warning btn-sm bi bi-trophy"></button>
+                        </div>
+                        <div class="card-body">
+                            <ol id="lista-time-azul" class="list-group list-group-flush gap-2">
+                                <!-- Adicionado via JavaScript -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Proximos -->
+        <div class="card d-flex mb-3">
+            <div class="card-header d-flex">
+                <h5 class="my-auto">Próximos</h5>
+                <button id="btnProximoTime" class="ms-auto btn btn-warning btn-sm bi bi-arrow-right-circle"></button>
+            </div>
+            <div class="card-body">
+                <ol id="lista-proximos" class="list-group list-group-flush gap-2">
+                    <!-- Adicionado via JavaScript -->
+                </ol>
+            </div>
+        </div>
+
+        <!-- Descanso -->
+        <div id="sessao-descanso" class="card d-flex mb-3">
+            <div class="card-header d-flex">
+                <h5 class="my-auto">Descanso</h5>
+                <button id="btnDescansoTime" class="ms-auto btn btn-warning btn-sm bi bi-arrow-right-circle"></button>
+            </div>
+            <div class="card-body">
+                <ol id="lista-descanso" class="list-group list-group-flush gap-2">
+                    <!-- Adicionado via JavaScript -->
+                </ol>
+            </div>
+        </div>
+
+        <!-- Fila -->
+        <div class="card d-flex mb-3">
+            <div class="card-header">
+                <h5 class="card-text">Fila</h5>
+            </div>
+            <div class="card-body">
+                <ol id="lista-fila-espera" class="list-group list-group-flush gap-2">
+                    <!-- Adicionado via JavaScript -->
+                </ol>
+            </div>
+        </div>
+
+        <!-- Rankings -->
+        <div class="card d-flex mb-3">
+            <div class="card-header">
+                <h5 class="card-text">Rankings</h5>
+            </div>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            Jogadores
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <ul id="lista-ranking" class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            Times
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <ul id="lista-ranking-times" class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="card d-flex mb-3">
+            <div class="card-header">
+                <h5 class="card-text">Ações</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush gap-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-dark" id="btn-reset">Resetar Dados</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configurações -->
+        <div class="card d-flex">
+            <div class="card-header">
+                <h5 class="card-text">Configurações</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush gap-3">
+                    <div class="d-flex flex-column">
+                        <span class="mb-1">Jogadores por time:</span>
+                        <input type="number" id="inputJogadoresPorTime" class="form-control" value="4" min="1" max="11" >
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" id="ativar-descanso">
+                        <span class="ms-2">Descanso</span>
+                    </div>
+                    <div class="d-flex flex-column" id="config-descanso">
+                        <div class="d-flex flex-column mb-3">
+                            <span class="mb-1">Vitórias para descanso:</span>
+                            <input type="number" id="qtdJogosDescanso" class="form-control" value="3" min="2" >
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="checkbox" id="retorno-automatico-descanso" >
+                            <span class="ms-2">Retorno automático (descanso para quadra)</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" id="mover-proximo-automatico" >
+                        <span class="ms-2">Mover automaticamente (próximo para a quadra)</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" id="primeiro-fila-proximo" >
+                        <span class="ms-2">Mover automaticamente (primeiro da fila para próximo)</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" id="ativar-notificacoes" >
+                        <span class="ms-2">Notificações</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="/utilidades/gerenciador-quadra-v2/assets/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/utilidades/gerenciador-quadra-v2/assets/js/app.js"></script>
+</body>
+
+</html>

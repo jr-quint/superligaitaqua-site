@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.btn-custom {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* CUSTOM */
+
+/* .card-header.bg-time-verde {
+    background-color: #228B22;
+} */
+
+.card-header.bg-time-verde .titulo-verde {
+    color: #228b22 !important;
+    /* Cor do texto, ajuste se necessário */
+    font-weight: bold;
+}
+
+/* .card-header.bg-time-azul {
+    background-color: #0056b3;
+} */
+
+.card-header.bg-time-azul .titulo-azul {
+    font-weight: bold;
+    color: #0056b3 !important;
+}
+
+/* NOTIFICAÇÃO */
+
+#notificacoes {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    z-index: 10;
+}
+
+.notificacao {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* color: white; */
+    z-index: 1000;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* .sucesso {
+    background-color: #4CAF50;
+}
+
+.falha {
+    background-color: #f44336;
+}
+
+.info {
+    background-color: #2196F3;
+}
+
+.aviso {
+    background-color: #FF9800;
+} */

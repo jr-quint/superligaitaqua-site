@@ -1,0 +1,34 @@
+{
+  "name": "Gerenciador de Quadra",
+  "short_name": "Gerenciador de Quadra",
+  "description": "Aplicativo para gerenciar filas e quadra.",
+  "start_url": "/utilidades/gerenciador-quadra-v2/",
+  "id": "/utilidades/gerenciador-quadra-v2/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0078d4",
+  "icons": [
+    {
+      "src": "/utilidades/gerenciador-quadra-v2/assets/icons/img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/utilidades/gerenciador-quadra-v2/assets/icons/img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+    "screenshots": [
+    {
+      "src": "/utilidades/gerenciador-quadra-v2/assets/screenshots/screenshot1.jpg",
+      "sizes": "1080x1850",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/utilidades/gerenciador-quadra-v2/assets/screenshots/screenshot2.jpg",
+      "sizes": "2050x1760",
+      "type": "image/jpg"
+    }
+  ]
+}
