@@ -1,9 +1,11 @@
+const CACHE_NAME = 'gerenciador-quadra-v2';
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('gerenciador-quadra-v2').then((cache) => {
+    caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
         '/utilidades/gerenciador-quadra-v2/',
-        '/utilidades/gerenciador-quadra-v2/index.html',
+        '/utilidades/gerenciador-quadra-v2/index.html', // cache inicial, mas rede terá prioridade
         '/utilidades/gerenciador-quadra-v2/assets/css/bootstrap-icons.css',
         '/utilidades/gerenciador-quadra-v2/assets/css/bootstrap.min.css',
         '/utilidades/gerenciador-quadra-v2/assets/css/main.css',
@@ -27,15 +29,41 @@ self.addEventListener('install', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // Se encontrado no cache, retorna
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      // Caso contrário, faz a requisição normalmente
-      return fetch(event.request);
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+      );
     })
   );
+});
+
+// Estratégia: network first, fallback para cache
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    // Para HTML (como index.html) → rede primeiro
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        })
+        .catch(() => caches.match(event.request))
+    );
+  } else {
+    // Para assets → rede primeiro também, mas fallback cache
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        })
+        .catch(() => caches.match(event.request))
+    );
+  }
 });
