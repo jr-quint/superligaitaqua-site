@@ -26,6 +26,13 @@ function gerarBotao(classe, onClick) {
     const btn = document.createElement('button');
     btn.className = classe;
     btn.onclick = onClick;
+
+    const span = document.createElement('span');
+    span.textContent = btnConteudo(classe);
+    span.className = "fallback";
+
+    btn.appendChild(span)
+
     return btn;
 }
 
@@ -51,6 +58,23 @@ function mostrarNotificacao(tipo, mensagem) {
     }
 }
 
+function btnConteudo(classe) {
+
+    substituirIcones()
+
+    if (classe.includes("bi-circle-fill")){
+        return `◉`;
+    }
+    if (classe.includes("bi-arrow-right")){
+        return `➔`;
+    }
+    if (classe.includes("bi-trash")){
+        return `✖`;
+    }
+    if (classe.includes("bi-arrow-counterclockwise")){
+        return `⟲`;
+    }
+}
 
 function gerarBotoesFila(jogador) {
     return [
@@ -563,6 +587,18 @@ async function resetarAplicativo() {
     }
 }
 
+
+function substituirIcones() {
+    if (document.fonts) {
+        document.fonts.load('1em "bootstrap-icons"').then(loaded => {
+            if (loaded.length > 0) {
+            document.querySelectorAll(".fallback").forEach(el => el.style.display = "none");
+            }
+        });
+    }
+}
+
+
 document.getElementById("nome-jogador").addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
         e.preventDefault();
@@ -590,6 +626,9 @@ document.getElementById('mover-proximo-automatico').addEventListener('change', m
 document.getElementById('primeiro-fila-proximo').addEventListener('change', moverPrimeiroDaFilaParaProximo);
 document.getElementById('ativar-notificacoes').addEventListener('change', salvarDados);
 
+window.onload = () => {
+    substituirIcones();
+};
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -71,18 +71,18 @@ body {
     transition: opacity 0.5s ease;
 }
 
-/* .sucesso {
-    background-color: #4CAF50;
+
+.fallback {
+    display: inline;
 }
 
-.falha {
-    background-color: #f44336;
+.bi::before {
+  font-family: "bootstrap-icons";
 }
 
-.info {
-    background-color: #2196F3;
+.bi::before {
+  display: inline-block;
 }
-
-.aviso {
-    background-color: #FF9800;
-} */
+.bi + .fallback {
+  display: none;
+}
