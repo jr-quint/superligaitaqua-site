@@ -22,16 +22,20 @@ const elementDescansoVerde = document.getElementById('descanso-verde');
 const elementDescansoAzul = document.getElementById('descanso-azul');
 
 
-function gerarBotao(classe, onClick) {
+function gerarBotao(classeBotao, classeIcone, onClick) {
     const btn = document.createElement('button');
-    btn.className = classe;
+    btn.className = classeBotao;
     btn.onclick = onClick;
 
+    const i = document.createElement('i');
+    i.className = classeIcone;
+
     const span = document.createElement('span');
-    span.textContent = btnConteudo(classe);
+    span.textContent = btnConteudo(classeIcone);
     span.className = "fallback";
 
-    btn.appendChild(span)
+    btn.appendChild(i);
+    btn.appendChild(span);
 
     return btn;
 }
@@ -58,36 +62,36 @@ function mostrarNotificacao(tipo, mensagem) {
     }
 }
 
-function btnConteudo(classe) {
+function btnConteudo(classeIcone) {
 
     substituirIcones()
 
-    if (classe.includes("bi-circle-fill")){
+    if (classeIcone.includes("bi-circle-fill")){
         return `◉`;
     }
-    if (classe.includes("bi-arrow-right")){
+    if (classeIcone.includes("bi-arrow-right")){
         return `➔`;
     }
-    if (classe.includes("bi-trash")){
+    if (classeIcone.includes("bi-trash")){
         return `✖`;
     }
-    if (classe.includes("bi-arrow-counterclockwise")){
+    if (classeIcone.includes("bi-arrow-counterclockwise")){
         return `⟲`;
     }
 }
 
 function gerarBotoesFila(jogador) {
     return [
-        gerarBotao('ms-auto btn btn-outline-success btn-sm bi bi-circle-fill', () => {
+        gerarBotao('ms-auto btn btn-outline-success btn-sm bi', 'bi-circle-fill', () => {
             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
         }),
-        gerarBotao('ms-1 btn btn-outline-primary btn-sm bi bi-circle-fill', () => {
+        gerarBotao('ms-1 btn btn-outline-primary btn-sm bi', 'bi-circle-fill', () => {
             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Azul?`)) moverJogador(jogador, quadra.getTimeAzul());
         }),
-        gerarBotao('ms-1 btn btn-outline-warning btn-sm bi bi-arrow-right', () => {
+        gerarBotao('ms-1 btn btn-outline-warning btn-sm bi', 'bi-arrow-right', () => {
             if (confirm(`Mover o jogador ${jogador.getNome()} para o Próximo Time?`)) moverJogador(jogador, quadra.getTimeProximo());
         }),
-        gerarBotao('ms-1 btn btn-outline-danger btn-sm bi bi-trash', () => {
+        gerarBotao('ms-1 btn btn-outline-danger btn-sm bi', 'bi-trash', () => {
             if (confirm(`Remover o jogador ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
         })
     ];
@@ -95,7 +99,7 @@ function gerarBotoesFila(jogador) {
 
 function gerarBotoesTime(jogador) {
     return [
-        gerarBotao('ms-auto btn btn-outline-secondary btn-sm bi bi-arrow-counterclockwise', () => {
+        gerarBotao('ms-auto btn btn-outline-secondary btn-sm bi', 'bi-arrow-counterclockwise', () => {
             if (confirm(`Tem certeza que deseja remover o jogador ${jogador.getNome()} deste grupo?`)) {
                 moveOuRemoveJogador(jogador);
             }
@@ -105,15 +109,15 @@ function gerarBotoesTime(jogador) {
 
 function gerarBotoesProximoTime(jogador) {
     return [
-        gerarBotao('ms-auto btn btn-outline-secondary btn-sm bi bi-arrow-counterclockwise', () => {
+        gerarBotao('ms-auto btn btn-outline-secondary btn-sm bi', 'bi-arrow-counterclockwise', () => {
             if (confirm(`Tem certeza que deseja remover o jogador ${jogador.getNome()} do Próximo Time?`)) {
                 moveOuRemoveJogador(jogador);
             }
         }),
-        gerarBotao('ms-1 btn btn-outline-success btn-sm bi bi-circle-fill', () => {
+        gerarBotao('ms-1 btn btn-outline-success btn-sm bi', 'bi-circle-fill', () => {
             if (confirm(`Mover ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
         }),
-        gerarBotao('ms-1 btn btn-outline-primary btn-sm bi bi-circle-fill', () => {
+        gerarBotao('ms-1 btn btn-outline-primary btn-sm bi', 'bi-circle-fill', () => {
             if (confirm(`Mover ${jogador.getNome()} para o Time Azul?`)) moverJogador(jogador, quadra.getTimeAzul());
         })
     ];
@@ -587,13 +591,21 @@ async function resetarAplicativo() {
     }
 }
 
-
 function substituirIcones() {
     if (document.fonts) {
         document.fonts.load('1em "bootstrap-icons"').then(loaded => {
-            if (loaded.length > 0) {
-            document.querySelectorAll(".fallback").forEach(el => el.style.display = "none");
-            }
+            document.querySelectorAll(".fallback").forEach(el => {
+                const icone = el.previousElementSibling; // <i> bi
+                if (loaded.length > 0) {
+                    // fonte carregou, escondemos fallback
+                    el.style.display = "none";
+                    if (icone) icone.style.display = "inline-block";
+                } else {
+                    // fonte não carregou, escondemos o ícone
+                    if (icone) icone.style.display = "none";
+                    el.style.display = "inline";
+                }
+            });
         });
     }
 }

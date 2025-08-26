@@ -64,7 +64,6 @@ body {
     width: 100%;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* color: white; */
     z-index: 1000;
     font-size: 16px;
     opacity: 0;
@@ -73,16 +72,15 @@ body {
 
 
 .fallback {
-    display: inline;
+    display: inline;       /* visível por padrão */
+    pointer-events: none;  /* clique passa pelo span */
 }
 
-.bi::before {
-  font-family: "bootstrap-icons";
+.bi {
+    font-family: "bootstrap-icons";
 }
 
-.bi::before {
-  display: inline-block;
-}
+/* inicialmente escondemos o fallback quando o ícone existe */
 .bi + .fallback {
-  display: none;
+    display: none;
 }
