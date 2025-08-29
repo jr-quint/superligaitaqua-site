@@ -77,6 +77,11 @@ body {
     pointer-events: none;
 }
 
+.btnIcones i {
+    pointer-events: none;
+}
+
+
 /* se a fonte Bootstrap Icons estiver carregada corretamente */
 .bi::before {
     font-family: "bootstrap-icons";
