@@ -70,6 +70,10 @@ class Grupo {
         }
     }
 
+    /**
+     * Move um jogador do grupo atual um indice acima
+     * @param {Jogador} jogador
+     */
     subirPosicao(jogador) {
         const index = this._jogadores.indexOf(jogador);
         if (index <= 0) return; // não encontrado ou já está no topo
@@ -77,6 +81,10 @@ class Grupo {
             [this._jogadores[index], this._jogadores[index - 1]];
     }
 
+    /**
+     * Move um jogador do grupo atual um indice abaixo
+     * @param {Jogador} jogador
+     */
     descerPosicao(jogador) {
         const index = this._jogadores.indexOf(jogador);
         if (index === -1 || index >= this._jogadores.length - 1) return; // não encontrado ou já está no fim
