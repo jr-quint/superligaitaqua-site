@@ -22,9 +22,10 @@ const elementDescansoVerde = document.getElementById('descanso-verde');
 const elementDescansoAzul = document.getElementById('descanso-azul');
 
 
-function gerarBotao(classeBotao, classeIcone, onClick) {
+function gerarBotao(classeBotao, classeIcone, tituloBotao, onClick) {
     const btn = document.createElement('button');
     btn.className = classeBotao;
+    btn.title = tituloBotao;
     btn.onclick = onClick;
 
     const i = document.createElement('i');
@@ -69,6 +70,12 @@ function btnConteudo(classeIcone) {
     if (classeIcone.includes("bi-circle-fill")){
         return `◉`;
     }
+    if (classeIcone.includes("bi-arrow-up")){
+        return `⬆`;
+    }
+    if (classeIcone.includes("bi-arrow-down")){
+        return `⬇`;
+    }
     if (classeIcone.includes("bi-arrow-right")){
         return `➔`;
     }
@@ -80,79 +87,27 @@ function btnConteudo(classeIcone) {
     }
 }
 
-// function gerarBotoesFila(jogador) {
-//     return [
-
-//         gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-up', () => {
-//             if (confirm(`Subir o jogador ${jogador.getNome()} uma posição na fila?`)) subirNaFila(jogador);
-//         }),
-//         gerarBotao('ms-1 btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-down', () => {
-//             if (confirm(`Descer o jogador ${jogador.getNome()} uma posição na fila?`)) descerNaFila(jogador);
-//         }),
-
-//         gerarBotao('ms-1 btn btn-outline-success btn-sm btnIcones', 'bi bi-circle-fill', () => {
-//             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
-//         }),
-//         gerarBotao('ms-1 btn btn-outline-primary btn-sm btnIcones', 'bi bi-circle-fill', () => {
-//             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Azul?`)) moverJogador(jogador, quadra.getTimeAzul());
-//         }),
-//         gerarBotao('ms-1 btn btn-outline-warning btn-sm btnIcones', 'bi bi-arrow-right', () => {
-//             if (confirm(`Mover o jogador ${jogador.getNome()} para o Próximo Time?`)) moverJogador(jogador, quadra.getTimeProximo());
-//         }),
-//         gerarBotao('ms-1 btn btn-outline-danger btn-sm btnIcones', 'bi bi-trash', () => {
-//             if (confirm(`Remover o jogador ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
-//         })
-//     ];
-// }
-
 function gerarBotoesFila(jogador) {
-    // Botões principais
-    const botoesPrincipais = [
-        gerarBotao('ms-auto btn btn-outline-success btn-sm btnIcones', 'bi bi-circle-fill', () => {
-            if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
+    return [
+
+        gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-up', 'Subir na Fila', () => {
+            if (confirm(`Subir o jogador ${jogador.getNome()} uma posição na fila?`)) subirNaFila(jogador);
         }),
-        gerarBotao('ms-1 btn btn-outline-primary btn-sm btnIcones', 'bi bi-circle-fill', () => {
-            if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Azul?`)) moverJogador(jogador, quadra.getTimeAzul());
+        gerarBotao('ms-1 btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-down', 'Descer na Fila', () => {
+            if (confirm(`Descer o jogador ${jogador.getNome()} uma posição na fila?`)) descerNaFila(jogador);
         }),
-        gerarBotao('ms-1 btn btn-outline-warning btn-sm btnIcones', 'bi bi-arrow-right', () => {
+        gerarBotao('ms-1 btn btn-outline-warning btn-sm btnIcones', 'bi bi-arrow-right', 'Mover para Próximo', () => {
             if (confirm(`Mover o jogador ${jogador.getNome()} para o Próximo Time?`)) moverJogador(jogador, quadra.getTimeProximo());
+        }),
+        gerarBotao('ms-1 btn btn-outline-danger btn-sm btnIcones', 'bi bi-trash', 'Remover da Fila', () => {
+            if (confirm(`Remover o jogador ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
         })
     ];
-
-    // Dropdown para ações secundárias
-    const dropdown = document.createElement('div');
-    dropdown.className = 'btn-group ms-1';
-
-    dropdown.innerHTML = `
-        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Subir</a></li>
-            <li><a class="dropdown-item" href="#">Descer</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
-        </ul>
-    `;
-
-    // Adicionar eventos nos itens do menu
-    const links = dropdown.querySelectorAll('.dropdown-item');
-    links[0].addEventListener('click', () => {
-        if (confirm(`Deseja subir ${jogador.getNome()} uma posição na fila?`)) subirNaFila(jogador);
-    });
-    links[1].addEventListener('click', () => {
-        if (confirm(`Deseja descer ${jogador.getNome()} uma posição na fila?`)) descerNaFila(jogador);
-    });
-    links[2].addEventListener('click', () => {
-        if (confirm(`Deseja remover ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
-    });
-
-    return [...botoesPrincipais, dropdown];
 }
 
 function gerarBotoesTime(jogador) {
     return [
-        gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-counterclockwise', () => {
+        gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-counterclockwise', 'Retornar à Fila', () => {
             if (confirm(`Tem certeza que deseja remover o jogador ${jogador.getNome()} deste grupo?`)) {
                 moveOuRemoveJogador(jogador);
             }
@@ -162,15 +117,15 @@ function gerarBotoesTime(jogador) {
 
 function gerarBotoesProximoTime(jogador) {
     return [
-        gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-counterclockwise', () => {
+        gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-counterclockwise', 'Retornar à Fila', () => {
             if (confirm(`Tem certeza que deseja remover o jogador ${jogador.getNome()} do Próximo Time?`)) {
                 moveOuRemoveJogador(jogador);
             }
         }),
-        gerarBotao('ms-1 btn btn-outline-success btn-sm btnIcones', 'bi bi-circle-fill', () => {
+        gerarBotao('ms-1 btn btn-outline-success btn-sm btnIcones', 'bi bi-circle-fill', 'Mover para Time Verde', () => {
             if (confirm(`Mover ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
         }),
-        gerarBotao('ms-1 btn btn-outline-primary btn-sm btnIcones', 'bi bi-circle-fill', () => {
+        gerarBotao('ms-1 btn btn-outline-primary btn-sm btnIcones', 'bi bi-circle-fill', 'Mover para Time Azul', () => {
             if (confirm(`Mover ${jogador.getNome()} para o Time Azul?`)) moverJogador(jogador, quadra.getTimeAzul());
         })
     ];
@@ -244,12 +199,22 @@ function moveOuRemoveJogador(jogador) {
         if (cbPrimeiroFila.checked) {
             moverPrimeiroDaFilaParaProximo();
         }
+
+        if (quadra.getTimeVerde().getJogadores() == 0) {
+            quadra.removeTimeVerde();
+        }
+
+        if (quadra.getTimeAzul().getJogadores() == 0) {
+            quadra.removeTimeAzul();
+        }
+
     } else if (grupo instanceof Fila) {
         mostrarNotificacao(notificacao.class.sucesso, `${jogador.getNome()} foi removido(a) da fila.`);
         grupo.removeJogador(jogador);
     }
 
     atualizarListaTimes();
+    atualizarPlacaresGlobal();
     salvarDados();
 }
 

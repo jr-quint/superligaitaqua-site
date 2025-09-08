@@ -24,7 +24,6 @@ class Time extends Grupo {
         return this._vitorias;
     }
 
-    // Adicionado: Agora é possível definir o número de vitórias do time
     setVitorias(vitorias) {
         this._vitorias = vitorias;
     }

@@ -194,7 +194,7 @@ class Quadra {
                 jogadores: this.getTimeAzul().getJogadores().map(j => ({ nome: j.getNome(), vitorias: j.getVitoria(), derrotas: j.getDerrota() }))
             },
             timeProximo: this.getTimeProximo().getJogadores().map(j => ({ nome: j.getNome(), vitorias: j.getVitoria(), derrotas: j.getDerrota() })),
-            // Corrigido: Agora salva as vitórias do time de descanso
+
             timeDescanso: {
                 vitorias: this.getTimeDescanso().getVitorias(),
                 jogadores: this.getTimeDescanso().getJogadores().map(j => ({ nome: j.getNome(), vitorias: j.getVitoria(), derrotas: j.getDerrota() }))
@@ -225,7 +225,6 @@ class Quadra {
 
         this.setTimeDescanso(new Time());
         if (dados.timeDescanso) {
-            // Corrigido: Agora restaura as vitórias do time de descanso
             this.getTimeDescanso().setVitorias(dados.timeDescanso.vitorias);
             dados.timeDescanso.jogadores.forEach(j => this.getTimeDescanso().addJogador(new Jogador(j.nome, j.vitorias, j.derrotas)));
         }
