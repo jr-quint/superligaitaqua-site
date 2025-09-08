@@ -70,6 +70,19 @@ class Grupo {
         }
     }
 
+    subirPosicao(jogador) {
+        const index = this._jogadores.indexOf(jogador);
+        if (index <= 0) return; // não encontrado ou já está no topo
+        [this._jogadores[index - 1], this._jogadores[index]] =
+            [this._jogadores[index], this._jogadores[index - 1]];
+    }
+
+    descerPosicao(jogador) {
+        const index = this._jogadores.indexOf(jogador);
+        if (index === -1 || index >= this._jogadores.length - 1) return; // não encontrado ou já está no fim
+        [this._jogadores[index], this._jogadores[index + 1]] =
+            [this._jogadores[index + 1], this._jogadores[index]];
+    }
 }
 
 export default Grupo;

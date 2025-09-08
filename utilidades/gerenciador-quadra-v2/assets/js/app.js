@@ -80,8 +80,34 @@ function btnConteudo(classeIcone) {
     }
 }
 
+// function gerarBotoesFila(jogador) {
+//     return [
+
+//         gerarBotao('ms-auto btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-up', () => {
+//             if (confirm(`Subir o jogador ${jogador.getNome()} uma posição na fila?`)) subirNaFila(jogador);
+//         }),
+//         gerarBotao('ms-1 btn btn-outline-secondary btn-sm btnIcones', 'bi bi-arrow-down', () => {
+//             if (confirm(`Descer o jogador ${jogador.getNome()} uma posição na fila?`)) descerNaFila(jogador);
+//         }),
+
+//         gerarBotao('ms-1 btn btn-outline-success btn-sm btnIcones', 'bi bi-circle-fill', () => {
+//             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
+//         }),
+//         gerarBotao('ms-1 btn btn-outline-primary btn-sm btnIcones', 'bi bi-circle-fill', () => {
+//             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Azul?`)) moverJogador(jogador, quadra.getTimeAzul());
+//         }),
+//         gerarBotao('ms-1 btn btn-outline-warning btn-sm btnIcones', 'bi bi-arrow-right', () => {
+//             if (confirm(`Mover o jogador ${jogador.getNome()} para o Próximo Time?`)) moverJogador(jogador, quadra.getTimeProximo());
+//         }),
+//         gerarBotao('ms-1 btn btn-outline-danger btn-sm btnIcones', 'bi bi-trash', () => {
+//             if (confirm(`Remover o jogador ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
+//         })
+//     ];
+// }
+
 function gerarBotoesFila(jogador) {
-    return [
+    // Botões principais
+    const botoesPrincipais = [
         gerarBotao('ms-auto btn btn-outline-success btn-sm btnIcones', 'bi bi-circle-fill', () => {
             if (confirm(`Mover o jogador ${jogador.getNome()} para o Time Verde?`)) moverJogador(jogador, quadra.getTimeVerde());
         }),
@@ -90,11 +116,38 @@ function gerarBotoesFila(jogador) {
         }),
         gerarBotao('ms-1 btn btn-outline-warning btn-sm btnIcones', 'bi bi-arrow-right', () => {
             if (confirm(`Mover o jogador ${jogador.getNome()} para o Próximo Time?`)) moverJogador(jogador, quadra.getTimeProximo());
-        }),
-        gerarBotao('ms-1 btn btn-outline-danger btn-sm btnIcones', 'bi bi-trash', () => {
-            if (confirm(`Remover o jogador ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
         })
     ];
+
+    // Dropdown para ações secundárias
+    const dropdown = document.createElement('div');
+    dropdown.className = 'btn-group ms-1';
+
+    dropdown.innerHTML = `
+        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Subir</a></li>
+            <li><a class="dropdown-item" href="#">Descer</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
+        </ul>
+    `;
+
+    // Adicionar eventos nos itens do menu
+    const links = dropdown.querySelectorAll('.dropdown-item');
+    links[0].addEventListener('click', () => {
+        if (confirm(`Deseja subir ${jogador.getNome()} uma posição na fila?`)) subirNaFila(jogador);
+    });
+    links[1].addEventListener('click', () => {
+        if (confirm(`Deseja descer ${jogador.getNome()} uma posição na fila?`)) descerNaFila(jogador);
+    });
+    links[2].addEventListener('click', () => {
+        if (confirm(`Deseja remover ${jogador.getNome()} da fila?`)) moveOuRemoveJogador(jogador);
+    });
+
+    return [...botoesPrincipais, dropdown];
 }
 
 function gerarBotoesTime(jogador) {
@@ -162,6 +215,21 @@ function moverJogador(jogador, destino) {
 
     jogador.getGrupo().moverJogador(jogador, destino);
     mostrarNotificacao(notificacao.class.sucesso, `${jogador.getNome()} movido(a) para ${destino.getNome()}.`);
+    moverPrimeiroDaFilaParaProximo();
+    atualizarListaTimes();
+    salvarDados();
+}
+
+function subirNaFila(jogador) {
+    jogador.getGrupo().subirPosicao(jogador)
+    moverPrimeiroDaFilaParaProximo();
+    atualizarListaTimes();
+    salvarDados();
+
+}
+
+function descerNaFila(jogador) {
+    jogador.getGrupo().descerPosicao(jogador)
     moverPrimeiroDaFilaParaProximo();
     atualizarListaTimes();
     salvarDados();
