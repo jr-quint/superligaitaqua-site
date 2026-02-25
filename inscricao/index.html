@@ -23,53 +23,204 @@
     </section>
 
     <!-- Informações essenciais -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h3 class="text-center mb-4">Formulário de Inscrição</h3>
-            <form id="whatsappForm" class="bg-white p-4 rounded shadow-sm">
-                <div class="mb-3">
-                    <label for="nomeTime" class="form-label">Nome do Time:</label>
-                    <input type="text" id="nomeTime" name="nomeTime" class="form-control" required>
-                </div>
+<section class="py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center mb-4">Formulário de Inscrição</h3>
 
-                <div class="mb-3">
-                    <label for="jogador1" class="form-label">Jogador 1:</label>
-                    <input type="text" id="jogador1" name="jogador1" class="form-control" required>
-                </div>
+        <form id="whatsappForm" class="bg-white p-4 rounded shadow-sm">
 
-                <div class="mb-3">
-                    <label for="jogador2" class="form-label">Jogador 2:</label>
-                    <input type="text" id="jogador2" name="jogador2" class="form-control" required>
+            <!-- Nome do Time -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 col-lg-8">
+                    <label for="nomeTime" class="form-label fw-bold">Nome do Time</label>
+                    <input type="text"
+                           id="nomeTime"
+                           name="nomeTime"
+                           class="form-control form-control-sm"
+                           required>
                 </div>
+            </div>
 
-                <div class="mb-3">
-                    <label for="jogador3" class="form-label">Jogador 3:</label>
-                    <input type="text" id="jogador3" name="jogador3" class="form-control" required>
-                </div>
+            <!-- Jogadores -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
 
-                <div class="mb-3">
-                    <label for="jogador4" class="form-label">Jogador 4:</label>
-                    <input type="text" id="jogador4" name="jogador4" class="form-control" required>
-                </div>
+                    <div class="row g-1">
 
-                <div class="mb-3">
-                    <label for="jogador5" class="form-label">Jogador 5:</label>
-                    <input type="text" id="jogador5" name="jogador5" class="form-control">
-                </div>
+                        <!-- JOGADOR 1 -->
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Jogador 1</label>
+                        </div>
 
-                <div class="mb-3 d-flex flex-column">
-                    <label for="jogador6" class="form-label">Jogador 6:</label>
-                    <smal class="obs-inscricao mb-2">* Obrigatório menina. Se já houver, a escolha é livre</smal>
-                    <input type="text" id="jogador6" name="jogador6" class="form-control">
-                </div>
+                        <div class="col-12 col-md-7">
+                            <label for="jogador1" class="form-label small text-muted">Nome</label>
+                            <input type="text"
+                                   id="jogador1"
+                                   name="jogador1"
+                                   class="form-control form-control-sm"
+                                   required>
+                        </div>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                        <div class="col-12 col-md-5">
+                            <label for="telefoneJogador1" class="form-label small text-muted">Telefone</label>
+                            <input type="text"
+                                   id="telefoneJogador1"
+                                   name="telefoneJogador1"
+                                   placeholder="(00) 00000-0000"
+                                   class="whatsapp form-control form-control-sm"
+                                   maxlength="15"
+                                   minx
+                                   required>
+                        </div>
+
+                        <!-- JOGADOR 2 -->
+                        <div class="col-12 mt-4">
+                            <label class="form-label fw-bold">Jogador 2</label>
+                        </div>
+
+                        <div class="col-12 col-md-7">
+                            <label for="jogador2" class="form-label small text-muted">Nome</label>
+                            <input type="text"
+                                   id="jogador2"
+                                   name="jogador2"
+                                   class="form-control form-control-sm"
+                                   required>
+                        </div>
+
+                        <div class="col-12 col-md-5">
+                            <label for="telefoneJogador2" class="form-label small text-muted">Telefone</label>
+                            <input type="text"
+                                   id="telefoneJogador2"
+                                   name="telefoneJogador2"
+                                   placeholder="(00) 00000-0000"
+                                   class="whatsapp form-control form-control-sm"
+                                   maxlength="15"
+                                   minx
+                                   required>
+                        </div>
+
+                        <!-- JOGADOR 3 -->
+                        <div class="col-12 mt-4">
+                            <label class="form-label fw-bold">Jogador 3</label>
+                        </div>
+
+                        <div class="col-12 col-md-7">
+                            <label for="jogador3" class="form-label small text-muted">Nome</label>
+                            <input type="text"
+                                   id="jogador3"
+                                   name="jogador3"
+                                   class="form-control form-control-sm"
+                                   required>
+                        </div>
+
+                        <div class="col-12 col-md-5">
+                            <label for="telefoneJogador3" class="form-label small text-muted">Telefone</label>
+                            <input type="text"
+                                   id="telefoneJogador3"
+                                   name="telefoneJogador3"
+                                   placeholder="(00) 00000-0000"
+                                   class="whatsapp form-control form-control-sm"
+                                   maxlength="15"
+                                   minx
+                                   required>
+                        </div>
+
+                        <!-- JOGADOR 4 -->
+                        <div class="col-12 mt-4">
+                            <label class="form-label fw-bold">Jogador 4</label>
+                        </div>
+
+                        <div class="col-12 col-md-7">
+                            <label for="jogador4" class="form-label small text-muted">Nome</label>
+                            <input type="text"
+                                   id="jogador4"
+                                   name="jogador4"
+                                   class="form-control form-control-sm"
+                                   required>
+                        </div>
+
+                        <div class="col-12 col-md-5">
+                            <label for="telefoneJogador4" class="form-label small text-muted">Telefone</label>
+                            <input type="text"
+                                   id="telefoneJogador4"
+                                   name="telefoneJogador4"
+                                   placeholder="(00) 00000-0000"
+                                   class="whatsapp form-control form-control-sm"
+                                   maxlength="15"
+                                   minx
+                                   required>
+                        </div>
+
+                        <!-- JOGADOR 5 -->
+                        <div class="col-12 mt-4">
+                            <label class="form-label fw-bold">Jogador 5</label>
+                        </div>
+
+                        <div class="col-12 col-md-7">
+                            <label for="jogador5" class="form-label small text-muted">Nome</label>
+                            <input type="text"
+                                   id="jogador5"
+                                   name="jogador5"
+                                   class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-12 col-md-5">
+                            <label for="telefoneJogador5" class="form-label small text-muted">Telefone</label>
+                            <input type="text"
+                                   id="telefoneJogador5"
+                                   name="telefoneJogador5"
+                                   placeholder="(00) 00000-0000"
+                                   class="whatsapp form-control form-control-sm"
+                                   maxlength="15">
+                                   minx
+                        </div>
+
+                        <!-- JOGADOR 6 -->
+                        <div class="col-12 mt-4">
+                            <label class="form-label fw-bold">Jogador 6</label>
+                            <small class="text-muted d-block">
+                                * Obrigatório menina. Se já houver, a escolha é livre
+                            </small>
+                        </div>
+
+                        <div class="col-12 col-md-7">
+                            <label for="jogador6" class="form-label small text-muted">Nome</label>
+                            <input type="text"
+                                   id="jogador6"
+                                   name="jogador6"
+                                   class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-12 col-md-5">
+                            <label for="telefoneJogador6" class="form-label small text-muted">Telefone</label>
+                            <input type="text"
+                                   id="telefoneJogador6"
+                                   name="telefoneJogador6"
+                                   placeholder="(00) 00000-0000"
+                                   class="whatsapp form-control form-control-sm"
+                                   maxlength="15">
+                                   minx
+                        </div>
+
+                    </div>
                 </div>
-            </form>
-            <span class="d-flex mt-4">A chave pix será informada após recebermos o formulário de inscrição</span>
-        </div>
-    </section>
+            </div>
+
+            <!-- Botão -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-5">
+                    Enviar Inscrição
+                </button>
+            </div>
+
+        </form>
+
+        <p class="text-center mt-4 small text-muted">
+            A chave pix será informada após recebermos o formulário de inscrição.
+        </p>
+
+    </div>
+</section>
 
     <!-- Rodapé -->
     <div include-html="/includes/footer.html"></div>
