@@ -93,6 +93,11 @@
         text-align: center;
     }
 
+    .obs-inscricao {
+        font-size: 12px;
+        color: grey;
+    }
+
 
     footer {
         background-color: var(--azul);
